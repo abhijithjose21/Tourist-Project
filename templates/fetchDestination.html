@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<style>
+    .card {
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-img-top {
+        border-bottom: 1px solid #e9ecef;
+    }
+
+    .list-group-item {
+        border: none;
+        padding: 0.75rem 1.25rem;
+        font-size: 1rem;
+    }
+
+    .list-group-item:not(:last-child) {
+        border-bottom: 1px solid #e9ecef;
+    }
+
+    .btn-lg {
+        padding: 0.75rem 1.25rem;
+        font-size: 1.25rem;
+    }
+</style>
+
+<div class="container-fluid position-relative bg-white py-5 mb-5">
+<div class="container-fluid position-relative bg-white py-5 mb-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <h1 class="display-4">{{ dest.Name }}</h1>
+            <p class="lead">{{ dest.state }}</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="card">
+                    <img src="{{ dest.img }}" class="card-img-top" alt="{{ dest.name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">Description</h5>
+                        <ul class="list-group list-group-flush">
+                            {% for item in incrediants %}
+                                <li class="list-group-item">{{ item }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <h5 class="card-title">Details</h5>
+                        <p class="card-text"><strong>State:</strong> {{ dest.state }}</p>
+                        <p class="card-text"><strong>District:</strong> {{ dest.dist }}</p>
+                        <p class="card-text"><strong>Weather:</strong> {{ dest.Weather }}</p>
+                        <p class="card-text"><strong>Map Link:</strong> {{ dest.map }}</p>
+                    </div>
+                </div>
+                <a href="/update_detail/{{ dest.id }}/" class="btn btn-primary btn-lg rounded-pill w-100 mb-3">Update Details</a>
+                <a href="/delete_confirm/{{ dest.id }}" class="btn btn-danger btn-lg rounded-pill w-100">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}
+

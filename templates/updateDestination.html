@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Destination</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Update Destination</h2>
+
+        <form action="/update_destination/{{dest.id}}/" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label >Name</label>
+                <input type="text" class="form-control"  name="Name" value="{{ dest.Name }}" required>
+            </div>
+            <div class="form-group">
+                <label >Weather</label>
+                <input type="text" class="form-control"  name="Weather" value="{{ dest.Weather }}" required>
+            </div>
+            <div class="form-group">
+                <label >State</label>
+                <input type="text" class="form-control"  name="state" value="{{ dest.state }}" required>
+            </div>
+            <div class="form-group">
+                <label >District</label>
+                <input type="text" class="form-control"  name="dist" value="{{ dest.dist }}" required>
+            </div>
+            <div class="form-group">
+                <label >Map</label>
+                <input type="text" class="form-control"  name="map" value="{{ dest.map }}" required>
+            </div>
+            <div class="form-group">
+                <label >Description</label>
+                <textarea class="form-control"  name="desc" rows="3" required>{{ dest.desc }}</textarea>
+            </div>
+            <div class="mb-3">
+                <label for="destination_image" class="form-label">Image:</label>
+                <input type="file" class="form-control" id="Destination_img" name="img" value="{{dest.img}}" accept="image/*" required>
+            </div>
+
+
+
+            <button type="submit" class="btn btn-success">Submit</button>
+
+        </form>
+    </div>
+</body>
+</html>
